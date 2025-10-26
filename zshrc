@@ -1,8 +1,12 @@
+setopt histignorealldups sharehistory
+
 EDITOR=vim
 VISUAL=vim
 HISTFILE=~/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
+GOPATH=$HOME/go
+PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 alias gs='git status'
 alias ga='git add'
 alias gps='git push'
@@ -11,6 +15,7 @@ alias gb='git branch'
 alias gc='git commit'
 alias gsw='git switch'
 alias glol='git log --graph --oneline --decorate'
+alias la='ls -la'
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' formats ' (%b)'
@@ -21,6 +26,7 @@ PROMPT='%~${vcs_info_msg_0_} '
 autoload -U compinit
 compinit
 _comp_options+=(globdots) # With hidden files
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 
 setopt AUTO_PUSHD           # Push the current directory visited on the stack.
 setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
@@ -57,3 +63,6 @@ cursor_mode() {
 cursor_mode
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/zsh-exts/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
