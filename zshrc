@@ -63,6 +63,6 @@ cursor_mode() {
 cursor_mode
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/zsh-exts/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
